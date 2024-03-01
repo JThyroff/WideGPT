@@ -2,16 +2,20 @@
 
 WideGPT is a Firefox add-on designed to enhance your browsing experience on GPT interfaces by widening the answer space, providing a more comfortable and visually appealing layout for reading responses.
 
-**TODO: Pack and distribute WideGPT as a Mozilla Addon.**
+## -> Download on addons.mozilla.org
 
-## Prerequisites
+[https://addons.mozilla.org/en-US/firefox/addon/wide-gpt/] (<https://addons.mozilla.org/en-US/firefox/addon/wide-gpt/>)
+
+### Local Installation Steps for debugging purposes
+
+#### Prerequisites
 
 Before installing WideGPT temporarily, ensure you have the following:
 
 - Firefox browser installed on your computer.
 - The source code of WideGPT downloaded to your local machine.
 
-## Local Installation Steps for debugging purposes
+#### Step by Step Guide
 
 Follow these steps to install WideGPT in Firefox for local use:
 

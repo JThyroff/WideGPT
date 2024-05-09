@@ -4,6 +4,10 @@ WideGPT is a Firefox add-on designed to enhance your browsing experience on GPT 
 
 ## [-> Download on addons.mozilla.org](https://addons.mozilla.org/en-US/firefox/addon/wide-gpt/)
 
+### Technical
+
+This plugin changes appearance only on chatgpt.com. See [manifest.json](manifest.json) for reference. 
+
 ### Local Installation Steps for debugging purposes
 
 #### Prerequisites

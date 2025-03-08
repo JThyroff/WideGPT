@@ -33,5 +33,15 @@ const adjustMaxWidth = () => {
         }
     `;
     attachStyleRule(css);
+
+    const css_no_bar = `
+        @media (min-width: 768px) {
+            .md\\:max-w-3xl {
+                max-width: 100% !important;
+            }
+        }
+    `;
+
+    attachStyleRule(css_no_bar);
 };
 adjustMaxWidth();

@@ -41,7 +41,21 @@ const adjustMaxWidth = () => {
             }
         }
     `;
-
     attachStyleRule(css_no_bar);
+    
+    const containerCss = `
+    @container (width >= 64rem) {
+        .\\@\\[64rem\\]\\:\\[--thread-content-max-width\\:48rem\\] {
+            --thread-content-max-width: 100% !important;
+        }
+    }
+
+    @container (width >= 34rem) {
+        .\\@\\[34rem\\]\\:\\[--thread-content-max-width\\:40rem\\] {
+            --thread-content-max-width: 100% !important;
+        }
+    }
+    `;
+    attachStyleRule(containerCss);
 };
 adjustMaxWidth();

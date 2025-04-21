@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "WideGPT",
-  "version": "1.3",
+  "version": "1.4.2",
   "description": "Scale Chat-GPT output to 100% width.",
   "browser_specific_settings": {
     "gecko": {
@@ -11,6 +11,12 @@
   "permissions": [
     
   ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "icons":{
+    "64": "icon_64.png"
+  },
   "content_scripts": [
     {
       "matches": [

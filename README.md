@@ -6,6 +6,7 @@ WideGPT is a Firefox add-on designed to enhance your browsing experience on GPT 
 
 ### Support my Work
 If you enjoy my projects, you can buy me a coffee!  
+
 [![Buy Me a Coffee](https://www.buymeacoffee.com/assets/img/custom_images/yellow_img.png)](https://buymeacoffee.com/jojo_thy)
 
 ### Technical

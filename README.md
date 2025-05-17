@@ -4,6 +4,9 @@ WideGPT is a Firefox add-on designed to enhance your browsing experience on GPT 
 
 ## [-> Download on addons.mozilla.org](https://addons.mozilla.org/en-US/firefox/addon/wide-gpt/)
 
+### Support
+<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="jojo_thy" data-color="#FFDD00" data-emoji="☕"  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>
+
 ### Technical
 
 This plugin changes appearance only on chatgpt.com. See [manifest.json](manifest.json) for reference. 

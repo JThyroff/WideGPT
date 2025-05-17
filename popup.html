@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,26 +8,52 @@
     <style>
         body {
             width: 300px;
-            height: 450px;
             font-family: Arial, sans-serif;
             text-align: center;
             padding: 5px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
         }
-        
+
+        .qr-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        img.qr {
+            max-width: 150px;
+            max-height: 150px;
+            width: auto;
+            height: auto;
+            padding: 20px;
+            display: cen
+        }
     </style>
-  </style>
-    </style>
+
 </head>
+
 <body>
     <h3>Support Wide GPT! ☺️</h3>
 
     Please consider buying a coffee to support maintenance of this plugin. :)
+    <hr>
+    <a href="https://www.buymeacoffee.com/jojo_thy" target="_blank"><img
+            src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee"
+            style="height: 60px !important;width: 217px !important;"></a>
 
-        <img src="bmc_qr.png" alt="bmc_qr" width="auto" height="auto" style="padding: 30px;"/>
+    <hr style="border: 1px solid #000; margin: 10px 0;">
+    <h4>Settings:</h4>
+    <label>
+        Width in percent(%): <input type="number" id="widthinput" name="width" value="95" min="0" max="100" ,
+            style="width: 50px;">
+    </label>
+    <hr>
+    <label>Refresh ChatGPT after adjustment!</label>
+    <hr style="border: 1px solid #000; margin: 30px 0;">
+    <div class="qr-container">
+        <img src="bmc_qr.png" alt="bmc_qr" class="qr" />
+    </div>
 
-        <a href="https://www.buymeacoffee.com/jojo_thy"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=jojo_thy&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" /></a>
-
+    <script src="content.js"></script>
 </body>

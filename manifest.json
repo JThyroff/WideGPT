@@ -5,16 +5,16 @@
   "description": "Scale Chat-GPT output to 100% width.",
   "browser_specific_settings": {
     "gecko": {
-      "id":"{354273a1-bbac-450b-95d2-10700836bba2}"
+      "id": "{354273a1-bbac-450b-95d2-10700836bba2}"
     }
   },
   "permissions": [
-    
+    "storage"
   ],
   "action": {
     "default_popup": "popup.html"
   },
-  "icons":{
+  "icons": {
     "64": "icon_64.png"
   },
   "content_scripts": [

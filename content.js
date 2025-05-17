@@ -1,61 +1,102 @@
+const saveSettings = (widthValue) => {
+    try {
+        browser.storage.local.set({ width: widthValue }).then(() => {
+            console.debug(`WideGPT: Settings saved - width: ${widthValue}%`)
+        });
+    } catch (error) {
+        console.error("WideGPT: Error saving settings:", error);
+    }
+};
 
-const attachStyleRule = (css) => {
-    // Create a style element
-    const style = document.createElement('style');
-    style.type = 'text/css';
+// Load settings from browser storage
+const loadSettings = () => {
+    try {
+        const result = browser.storage.local.get("width").then((result) => {
+            const widthValue = result.width || 95; // Default to 95% if not set
+            console.debug(`WideGPT: Settings loaded - width: ${widthValue}%`);
+            return widthValue;
+        });
+        return result;
+    } catch (error) {
+        console.error("WideGPT: Error loading settings:", error);
+        return 95; // Default width in case of error
+    }
+};
 
-    // Check if the style element can be used with textContent
+// Function to attach or update a dynamic style rule
+const attachOrUpdateStyleRule = (css, id = 'dynamic-style') => {
+    // Check if a style element with the given ID already exists
+    let style = document.getElementById(id);
+    if (!style) {
+        // Create a new style element if it doesn't exist
+        style = document.createElement('style');
+        style.type = 'text/css';
+        style.id = id;
+        document.head.appendChild(style);
+    }
+
+    // Update the CSS content
     if (style.styleSheet) {
         style.styleSheet.cssText = css;
     } else {
-        style.appendChild(document.createTextNode(css));
+        style.textContent = css;
     }
-
-    // Append the style element to the head of the document
-    document.head.appendChild(style);
 };
 
-// This function will be executed when the page loads
-const adjustMaxWidth = () => {
-    console.debug('WideGPT.adjustMaxWidth() called');
+// Function to dynamically update the CSS rules
+const adjustMaxWidth = (width = 100) => {
+    console.debug(`WideGPT.adjustMaxWidth() called with width: ${width}%`);
 
-    // Define the CSS rule to override max-width within the media query
+    // Dynamically create CSS rules using the specified width
     const css = `
         @media (min-width: 1280px) {
             .xl\\:max-w-\\[48rem\\] {
-                max-width: 100% !important;
+                max-width: ${width}% !important;
             }
             .xl\\:px-5 {
                 padding-left: 1.25rem;
                 padding-right: 1.25rem;
-                max-width: 100% !important;
+                max-width: ${width}% !important;
             }
         }
-    `;
-    attachStyleRule(css);
 
-    const css_no_bar = `
         @media (min-width: 768px) {
             .md\\:max-w-3xl {
-                max-width: 100% !important;
+                max-width: ${width}% !important;
+            }
+        }
+
+        @container (width >= 64rem) {
+            .\\@\\[64rem\\]\\:\\[--thread-content-max-width\\:48rem\\] {
+                --thread-content-max-width: ${width}% !important;
+            }
+        }
+
+        @container (width >= 34rem) {
+            .\\@\\[34rem\\]\\:\\[--thread-content-max-width\\:40rem\\] {
+                --thread-content-max-width: ${width}% !important;
             }
         }
     `;
-    attachStyleRule(css_no_bar);
-    
-    const containerCss = `
-    @container (width >= 64rem) {
-        .\\@\\[64rem\\]\\:\\[--thread-content-max-width\\:48rem\\] {
-            --thread-content-max-width: 100% !important;
-        }
-    }
-
-    @container (width >= 34rem) {
-        .\\@\\[34rem\\]\\:\\[--thread-content-max-width\\:40rem\\] {
-            --thread-content-max-width: 100% !important;
-        }
-    }
-    `;
-    attachStyleRule(containerCss);
+    attachOrUpdateStyleRule(css);
 };
-adjustMaxWidth();
+
+// Initial call with default width
+loadSettings().then((widthValue) => {
+    const widthInput = document.getElementById("widthinput")
+    if (widthInput) {
+        widthInput.value = widthValue; // Set the input field to the loaded value
+    }
+    adjustMaxWidth(widthValue);
+});
+
+// Add an event listener to the width input field
+const widthInput = document.getElementById("widthinput");
+if (widthInput) {
+    widthInput.addEventListener("input", () => {
+        const widthValue = widthInput.value;
+        console.debug(`WideGPT: Width input changed to: ${widthValue}%`);
+        adjustMaxWidth(widthValue);
+        saveSettings(widthValue);
+    });
+}

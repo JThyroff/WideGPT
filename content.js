@@ -80,7 +80,8 @@ const adjustMaxWidth = (width = 100) => {
 
         /* Override table container margins added by ChatGPT */
         div[class^='_tableContainer'] {
-            --thread-content-width: unset !important;
+            --thread-gutter-size: unset !important;
+            width: unset !important;
         }
 
         /* Ensure table wrapper matches selected width */

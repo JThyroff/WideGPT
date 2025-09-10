@@ -78,6 +78,14 @@ const adjustMaxWidth = (width = 100) => {
             }
         }
 
+        .thread-lg\\:\\[--thread-content-max-width\\:48rem\\] {
+            --thread-content-max-width: ${width}% !important;
+        }
+
+        div[class*="--thread-content-max-width"] {
+            --thread-content-max-width: ${width}% !important;
+        }
+
         /* Override table container margins added by ChatGPT */
         div[class^='_tableContainer'] {
             --thread-gutter-size: unset !important;

@@ -101,6 +101,41 @@ const adjustMaxWidth = (width = 100) => {
   attachOrUpdateStyleRule(css);
 };
 
+// Hide the header "Share" label so the button no longer covers the section copy button
+const hideShareLabel = () => {
+  const css = `
+        button[data-testid="share-chat-button"],
+        #conversation-header-actions button[aria-label="Share"] {
+            font-size: 0 !important;
+            gap: 0 !important;
+            column-gap: 0 !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+            min-width: 2.25rem !important;
+            width: 2.25rem !important;
+        }
+
+        button[data-testid="share-chat-button"] *,
+        #conversation-header-actions button[aria-label="Share"] * {
+            font-size: 0 !important;
+            letter-spacing: 0 !important;
+        }
+
+        button[data-testid="share-chat-button"] svg,
+        #conversation-header-actions button[aria-label="Share"] svg {
+            margin: 0 !important;
+            margin-inline-end: 0 !important;
+        }
+
+        /* Dedicated text wrappers (keeps the icon visible) */
+        button[data-testid="share-chat-button"] span:not(:has(svg)),
+        #conversation-header-actions button[aria-label="Share"] span:not(:has(svg)) {
+            display: none !important;
+        }
+    `;
+  attachOrUpdateStyleRule(css, "widegpt-share-label-style");
+};
+
 // Initial call with default width
 loadSettings().then((widthValue) => {
   const widthInput = document.getElementById("widthinput");
@@ -109,6 +144,8 @@ loadSettings().then((widthValue) => {
   }
   adjustMaxWidth(widthValue);
 });
+
+hideShareLabel();
 
 // Add an event listener to the width input field
 const widthInput = document.getElementById("widthinput");

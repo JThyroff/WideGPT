@@ -97,6 +97,14 @@ const adjustMaxWidth = (width = 100) => {
             min-width: fit-content !important;
             max-width: ${width}% !important;
         }
+
+        /* Fix ChatGPT DIL tables overflowing to the left */
+        div[class*="TableFrame-"] {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            width: 100% !important;
+            max-width: 100% !important;
+        }
     `;
   attachOrUpdateStyleRule(css);
 };
